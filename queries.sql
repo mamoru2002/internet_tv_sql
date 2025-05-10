@@ -90,7 +90,7 @@ FROM(
         genres.name AS genre_name,
         programs.name AS program_name,
         AVG(program_slots.views) AS avg_views,
-        ROW_NUMBER() OVER (PARTITION BY genres.name ORDER BY AVG(program_slots.views)) AS avg_rank
+        RANK() OVER (PARTITION BY genres.name ORDER BY AVG(program_slots.views) DESC) AS avg_rank
     FROM programs
     JOIN episodes ON episodes.program_id = programs.id
     JOIN program_slots ON program_slots.episode_id = episodes.id
