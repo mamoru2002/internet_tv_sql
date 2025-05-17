@@ -1,0 +1,57 @@
+@startuml
+!define table(x) class x << (T,#FFAAAA) >>
+!define primary_key(x) <u>x</u>
+!define foreign_key(x) <i>x</i>
+
+' テーブル定義
+
+table(channels) {
+  primary_key(id) : INT
+  name : VARCHAR(20)
+}
+
+table(programs) {
+  primary_key(id) : INT
+  name : VARCHAR(100)
+  program_detail : VARCHAR(500)
+}
+
+table(episodes) {
+  primary_key(id) : INT
+  name : VARCHAR(100)
+  season_num : INT
+  episode_num : INT
+  episode_detail : VARCHAR(500)
+  movie_time : INT
+  release_date : DATE
+  foreign_key(program_id) : INT
+}
+
+table(program_slots) {
+  primary_key(id) : INT
+  start_time : DATETIME
+  end_time : DATETIME
+  foreign_key(channel_id) : INT
+  foreign_key(episode_id) : INT
+  views : INT
+}
+
+table(genres) {
+  primary_key(id) : INT
+  name : VARCHAR(20)
+}
+
+table(programs_genres) {
+  foreign_key(program_id) : INT
+  foreign_key(genre_id) : INT
+}
+
+' リレーション定義
+
+programs ||--o{ episodes : contains
+channels ||--o{ program_slots : broadcasts
+episodes ||--o{ program_slots : scheduled
+programs ||--o{ programs_genres : tagged
+genres ||--o{ programs_genres : categorized
+
+@enduml
