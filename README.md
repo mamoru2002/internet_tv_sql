@@ -122,6 +122,7 @@ mysql -u tv_user -p internet_tv < queries.sql
 ```
 
 ## 7. ER図
-![image](https://github.com/user-attachments/assets/2d4b2388-19d5-4094-adc5-4452f0560d90)
+![image](https://github.com/user-attachments/assets/244eec6a-1e1c-4bc9-a65c-86dbedf19a5a)
+
 
 ---
