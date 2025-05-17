@@ -121,4 +121,7 @@ mysql> SELECT * FROM program_slots ORDER BY start_time LIMIT 5;
 mysql -u tv_user -p internet_tv < queries.sql
 ```
 
+## 7. ER図
+![image](https://github.com/user-attachments/assets/2d4b2388-19d5-4094-adc5-4452f0560d90)
+
 ---
